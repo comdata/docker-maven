@@ -27,9 +27,9 @@ pipeline {
 
             steps {
                 withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                    sh "/usr/bin/docker login -u ${USERNAME} -p ${PASSWORD}"
-                    sh "/usr/bin/docker push comdata456/maven-jdk-11-slim:${env.BUILD_ID}"
-                    sh "/usr/bin/docker push comdata456/maven-jdk-11-slim:latest"
+                    sh "docker login -u ${USERNAME} -p ${PASSWORD}"
+                    sh "docker push comdata456/maven-jdk-11-slim:${env.BUILD_ID}"
+                    sh "docker push comdata456/maven-jdk-11-slim:latest"
                 }
             }
         }
