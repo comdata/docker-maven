@@ -1,3 +1,7 @@
+Adjusted jdk-11-slim to run on arm and include docker.
+
+Published: https://hub.docker.com/repository/docker/comdata456/maven-jdk-11-slim
+
 docker-maven
 ============
 
