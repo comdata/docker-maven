@@ -19,7 +19,7 @@ pipeline {
         stage('Make Container') {
 
             steps {
-                sh "docker build -t comdata456/maven-jdk-11-slim:${env.BUILD_ID} ."
+                sh "docker build -t comdata456/maven-jdk-11-slim:${env.BUILD_ID} jdk-11-slim"
                 sh "docker tag comdata456/maven-jdk-11-slim:${env.BUILD_ID} comdata456/maven-jdk-11-slim:latest"
             }
         }
