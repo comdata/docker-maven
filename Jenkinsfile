@@ -23,14 +23,14 @@ pipeline {
                 sh "docker tag comdata456/maven-jdk-11-slim:${env.BUILD_ID} comdata456/maven-jdk-11-slim:latest"
             }
         }
-    }
+          stage('Publish') {
 
-    post {
-        success {
-            withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-                sh "/usr/bin/docker login -u ${USERNAME} -p ${PASSWORD}"
-                sh "/usr/bin/docker push comdata456/maven-jdk-11-slim:${env.BUILD_ID}"
-                sh "/usr/bin/docker push comdata456/maven-jdk-11-slim:latest"
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+                    sh "/usr/bin/docker login -u ${USERNAME} -p ${PASSWORD}"
+                    sh "/usr/bin/docker push comdata456/maven-jdk-11-slim:${env.BUILD_ID}"
+                    sh "/usr/bin/docker push comdata456/maven-jdk-11-slim:latest"
+                }
             }
         }
     }
