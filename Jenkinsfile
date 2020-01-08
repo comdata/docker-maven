@@ -26,9 +26,6 @@ pipeline {
     }
 
     post {
-        always {
-            archiveArtifacts artifacts: 'target/**/*.jar', fingerprint: true
-        }
         success {
             withCredentials([usernamePassword(credentialsId: 'docker-hub-credentials', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
                 sh "/usr/bin/docker login -u ${USERNAME} -p ${PASSWORD}"
